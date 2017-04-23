@@ -12,7 +12,6 @@ public class Kauppa {
         this.viitegeneraattori = viitegeneraattori;
     }
 
-
     public void aloitaOstokset(){
         yhteishinta = 0;
     }
