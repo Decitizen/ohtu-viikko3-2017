@@ -13,10 +13,18 @@ public class Not implements Matcher {
         this.matcher = matcher;
     }
 
+    public Not() {
+    }
+    
     @Override
     public boolean matches(Player p) {
         if (matcher.matches(p)) return false;
         else return true;
-    }    
+    }
+    
+    @Override
+    public String getType() {
+        return "not";
+    }
     
 }

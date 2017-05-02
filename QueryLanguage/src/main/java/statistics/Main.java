@@ -6,14 +6,26 @@ public class Main {
     public static void main(String[] args) {
         Statistics stats = new Statistics(new PlayerReaderImpl("http://nhlstats-2013-14.herokuapp.com/players.txt"));
           
-        Matcher m = new Or( 
-                        new And(
-                            new HasFewerThan(12, "assists"), new PlaysIn("CHI")),
-                        new And(new HasAtLeast(30, "goals"), new Not(new PlaysIn("SJS")))
-        );
+        QueryBuilder query = new QueryBuilder();
         
+        
+        Matcher m1 = query.playsIn("PHI")
+                  .hasAtLeast(10, "goals")
+                  .hasFewerThan(20, "assists").build();
+ 
+        Matcher m2 = query.playsIn("EDM")
+                  .hasAtLeast(60, "points").build();
+        
+        Matcher m3 = query.or(m1,m2).build();
+        
+        System.out.println("Querybuilder:\n" );
+        printQueryResult(stats, m3);
+    }        
+
+    public static void printQueryResult(Statistics stats, Matcher m) {
         for (Player player : stats.matches(m)) {
             System.out.println( player );
         }
     }
+    
 }

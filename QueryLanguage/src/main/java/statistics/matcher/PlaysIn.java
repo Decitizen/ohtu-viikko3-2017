@@ -15,4 +15,9 @@ public class PlaysIn implements Matcher {
         return p.getTeam().contains(team);
     }
     
+    @Override
+    public String getType() {
+        return "playsin";
+    }
+    
 }

@@ -20,4 +20,9 @@ public class And implements Matcher {
 
         return true;
     }
+
+    @Override
+    public String getType() {
+        return "and";
+    }
 }

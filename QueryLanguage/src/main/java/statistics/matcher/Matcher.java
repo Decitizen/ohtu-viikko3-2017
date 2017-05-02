@@ -5,4 +5,5 @@ import statistics.Player;
 
 public interface Matcher {
     boolean matches(Player p);
+    String getType();
 }
